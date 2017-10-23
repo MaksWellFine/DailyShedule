@@ -1,7 +1,17 @@
+/*<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>*/
+
+
 package com.twogev.dailyshedule;
+
+import java.net.URLEncoder;
+import java.io.UnsupportedEncodingException;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -9,6 +19,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.net.*;
+import java.io.*;
+
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -70,9 +84,53 @@ public class SignInActivity extends AppCompatActivity {
                     break;
             }
 
-            ShowMain();
+            //SendRequest();
+            try {
+                String key = URLEncoder.encode("d3J5s66G", "UTF-8");
+                String email = URLEncoder.encode(edit_login.getText().toString(), "UTF-8");
+                String password = URLEncoder.encode(edit_password.getText().toString(), "UTF-8");
+                new DownloadImageTask().execute("https://daytalk.000webhostapp.com/sign_in.php?key="+key+"&email="+email+"&password="+password);
+            }catch (UnsupportedEncodingException e){}
+            //ShowMain();
         }
     };
+
+    private class DownloadImageTask extends AsyncTask<String, Void, String> {
+        /** The system calls this to perform work in a worker thread and
+         * delivers it the parameters given to AsyncTask.execute() */
+        protected String doInBackground(String... urls) {
+            return SendRequest(urls[0]);
+        }
+
+        /** The system calls this to perform work in the UI thread and delivers
+         * the result from doInBackground() */
+        protected void onPostExecute(String result) {
+            Button but_register = (Button) findViewById(R.id.but_register);
+            but_register.setText(result);
+        }
+    }
+
+    public String SendRequest(String urlAddress)
+    {
+        String SetServerString = "";
+        try {
+            URL url = new URL(urlAddress);
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            try {
+                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                byte[] mas = new byte[100];
+                int len = in.read(mas);
+                for (int i = 0; i < len; i++)
+                {
+                   SetServerString += (char)mas[i];
+                }
+            } finally {
+                urlConnection.disconnect();
+            }
+        }catch (Exception e){SetServerString = "Fail";}
+
+        return SetServerString;
+    }
 
     public void ShowMain()
     {
