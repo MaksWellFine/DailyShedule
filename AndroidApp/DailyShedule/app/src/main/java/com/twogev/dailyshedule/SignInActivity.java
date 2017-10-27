@@ -1,9 +1,3 @@
-/*<uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>*/
-
-
 package com.twogev.dailyshedule;
 
 import android.content.Intent;
@@ -11,27 +5,28 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-
 public class SignInActivity extends AppCompatActivity {
 
-    EditText edit_login;
-    TextView text_login;
 
-    EditText edit_password;
-    TextView text_password;
-
-    Intent registerA;
+    //public Intent intent_reg = new Intent(this, RegisterActivity.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in_window);
+
         getSupportActionBar().hide();
+        EditText edit_login = (EditText)findViewById(R.id.edit_login);
+        TextView text_login = (TextView)findViewById(R.id.text_login);
+
+        EditText edit_password = (EditText)findViewById(R.id.edit_password);
+        TextView text_password = (TextView)findViewById(R.id.text_password);
 
         Button but_log_in = (Button) findViewById(R.id.but_log_in);
         but_log_in.setOnClickListener(but_log_in_Click);
@@ -39,20 +34,49 @@ public class SignInActivity extends AppCompatActivity {
         Button but_register = (Button) findViewById(R.id.but_register);
         but_register.setOnClickListener(but_register_Click);
 
-        edit_login = (EditText)findViewById(R.id.edit_login);
-        text_login = (TextView)findViewById(R.id.text_login);
 
-        edit_password = (EditText)findViewById(R.id.edit_password);
-        text_password = (TextView)findViewById(R.id.text_password);
 
-        registerA = new Intent(this, RegisterActivity.class);
+        intent = new Intent(this, RegisterActivity.class);
+        edit_password.setOnTouchListener(new_text_password);
+
+        edit_login.setOnTouchListener(new_text_login);
     }
 
+    Intent intent1;
+    private View.OnTouchListener new_text_password = new View.OnTouchListener()
+    {
+
+
+        public boolean onTouch(View v, MotionEvent event) {
+            TextView text_password = (TextView)findViewById(R.id.text_password);
+            text_password.setText("Password");
+            text_password.setTextColor(0xFF666666);
+            return false;
+        }
+    };
+
+
+
+    private View.OnTouchListener new_text_login = new View.OnTouchListener()
+    {
+
+
+        public boolean onTouch(View v, MotionEvent event) {
+            TextView text_login = (TextView)findViewById(R.id.text_login);
+            text_login.setText("Login (email)");
+            text_login.setTextColor(0xFF666666);
+            return false;
+        }
+    };
     private SearchView.OnClickListener but_log_in_Click = new SearchView.OnClickListener()
     {
         public void onClick(View v)
         {
-            boolean incorectInput = false;
+            EditText edit_login = (EditText)findViewById(R.id.edit_login);
+            TextView text_login = (TextView)findViewById(R.id.text_login);
+
+            EditText edit_password = (EditText)findViewById(R.id.edit_password);
+            TextView text_password = (TextView)findViewById(R.id.text_password);
             switch (check_login(edit_login.getText().toString()))
             {
                 case (0):
@@ -62,12 +86,12 @@ public class SignInActivity extends AppCompatActivity {
                 case (1):
                     text_login.setTextColor(Color.RED);
                     text_login.setText("Incorect email address");
-                    incorectInput = true;
+                    edit_login.setText("");
                     break;
                 case (2):
                     text_login.setTextColor(Color.RED);
                     text_login.setText("Write your email");
-                    incorectInput = true;
+                    edit_login.setText("");
                     break;
             }
 
@@ -80,31 +104,25 @@ public class SignInActivity extends AppCompatActivity {
                 case (1):
                     text_password.setTextColor(Color.RED);
                     text_password.setText("Write your password");
-                    incorectInput = true;
+                    edit_password.setText("");
                     break;
                 case (2):
                     text_password.setTextColor(Color.RED);
                     text_password.setText("Too short password");
-                    incorectInput = true;
+                    edit_password.setText("");
                     break;
             }
 
-            if(incorectInput) return;
 
-            //SendRequest();
-            ShowWaitingActivity();
-            //ShowMain();
+
         }
     };
 
-    private void ShowWaitingActivity()
+    public void ShowMain()
     {
-        Intent waitingA = new Intent(this, WaitingActivity.class);
-        //waitingA.putExtra("Parent", this.getClass());
-        waitingA.putExtra("Type", 0);
-        waitingA.putExtra("Email", edit_login.getText().toString());
-        waitingA.putExtra("Password", edit_password.getText().toString());
-        startActivity(waitingA);
+        intent1 = new Intent(this, Main.class);
+        startActivity(intent1);
+        this.finish();
     }
 
     private int check_login(String s)
@@ -123,11 +141,20 @@ public class SignInActivity extends AppCompatActivity {
         return i;
     }
 
+    private void Registration(){
+        startActivity(intent);
+        this.finish();
+
+    }
+
+    Intent intent;
+
     private SearchView.OnClickListener but_register_Click = new SearchView.OnClickListener()
     {
         public void onClick(View v)
         {
-            startActivity(registerA);
+            Registration();
+            //startActivity(intent_reg);
         }
     };
 

@@ -1,1 +1,0 @@
-This folder uses for android app project
