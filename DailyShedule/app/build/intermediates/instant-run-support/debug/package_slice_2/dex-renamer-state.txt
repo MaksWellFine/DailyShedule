@@ -1,4 +1,0 @@
-#Fri Oct 27 18:23:10 EEST 2017
-base.0=C\:\\Users\\user\\AndroidStudioProjects\\Project\\AndroidApp\\DailyShedule\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_2
-renamed.0=classes.dex
-file.0=C\:\\Users\\user\\AndroidStudioProjects\\Project\\AndroidApp\\DailyShedule\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_2\\classes.dex

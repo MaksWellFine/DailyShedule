@@ -1,7 +1,0 @@
-#Fri Oct 27 18:18:17 EEST 2017
-base.0=C\:\\Users\\user\\AndroidStudioProjects\\Project\\AndroidApp\\DailyShedule\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_0648247d10ba426b8ae5c6eee3f7cb642969d6af
-renamed.1=classes2.dex
-renamed.0=classes.dex
-file.1=C\:\\Users\\user\\AndroidStudioProjects\\Project\\AndroidApp\\DailyShedule\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_6ccf73331b7f6025ff566eaf185f10488c0ddac9\\classes.dex
-base.1=C\:\\Users\\user\\AndroidStudioProjects\\Project\\AndroidApp\\DailyShedule\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_6ccf73331b7f6025ff566eaf185f10488c0ddac9
-file.0=C\:\\Users\\user\\AndroidStudioProjects\\Project\\AndroidApp\\DailyShedule\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_0648247d10ba426b8ae5c6eee3f7cb642969d6af\\classes.dex
