@@ -45,46 +45,43 @@ public class SignInActivity extends AppCompatActivity {
         edit_password = (EditText)findViewById(R.id.edit_password);
         text_password = (TextView)findViewById(R.id.text_password);
 
-<<<<<<< HEAD
-        intent = new Intent(this, RegisterActivity.class);
-        edit_password.setOnTouchListener(new_text_password);
+        registerA = new Intent(this, RegisterActivity.class);
+//        edit_password.setOnTouchListener(new_text_password);
+//
+//        edit_login.setOnTouchListener(new_text_login);
 
-        edit_login.setOnTouchListener(new_text_login);
-
-
-    }
-
-    Intent intent1;
-    private View.OnTouchListener new_text_password = new View.OnTouchListener()
-    {
-
-
-        public boolean onTouch(View v, MotionEvent event) {
-            TextView text_password = (TextView)findViewById(R.id.text_password);
-            text_password.setText("Password");
-            text_password.setTextColor(0xFF666666);
-            return false;
-        }
-    };
-
-
-
-    private View.OnTouchListener new_text_login = new View.OnTouchListener()
-    {
-
-
-        public boolean onTouch(View v, MotionEvent event) {
-            TextView text_login = (TextView)findViewById(R.id.text_login);
-            text_login.setText("Login (email)");
-            text_login.setTextColor(0xFF666666);
-            return false;
-        }
-    };
-=======
         registerA = new Intent(this, RegisterActivity.class);
     }
 
->>>>>>> 0d7a90648860287d1067ec916fb278e30d7bfee4
+//    Intent intent1;
+//    private View.OnTouchListener new_text_password = new View.OnTouchListener()
+//    {
+//
+//
+//        public boolean onTouch(View v) {
+//            TextView text_password = (TextView)findViewById(R.id.text_password);
+//            text_password.setText("Password");
+//            text_password.setTextColor(0xFF666666);
+//            return false;
+//        }
+//    };
+//
+//
+//
+//    private View.OnTouchListener new_text_login = new View.OnTouchListener()
+//    {
+//
+//
+//        public boolean onTouch(View v) {
+//            TextView text_login = (TextView)findViewById(R.id.text_login);
+//            text_login.setText("Login (email)");
+//            text_login.setTextColor(0xFF666666);
+//            return false;
+//        }
+//    };
+
+
+
     private SearchView.OnClickListener but_log_in_Click = new SearchView.OnClickListener()
     {
         public void onClick(View v)
@@ -95,11 +92,6 @@ public class SignInActivity extends AppCompatActivity {
                 case (0):
                     text_login.setTextColor(0xFF666666);
                     text_login.setText("Login (email)");
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 0d7a90648860287d1067ec916fb278e30d7bfee4
                     break;
                 case (1):
                     text_login.setTextColor(Color.RED);
