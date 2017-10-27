@@ -40,11 +40,11 @@ public class SignInActivity extends AppCompatActivity {
         edit_password.setOnTouchListener(new_text_password);
 
         edit_login.setOnTouchListener(new_text_login);
-        mainn = new Intent(this, Main2Activity.class);
+
 
     }
 
-    Intent intent1, mainn;
+    Intent intent1;
     private View.OnTouchListener new_text_password = new View.OnTouchListener()
     {
 
@@ -84,7 +84,7 @@ public class SignInActivity extends AppCompatActivity {
                 case (0):
                     text_login.setTextColor(0xFF666666);
                     text_login.setText("Login (email)");
-                    startActivity(mainn);
+
 
                     break;
                 case (1):

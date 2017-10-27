@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\user\.android\build-cache\d594ed8d39b24ff20d61cbc2db3e57f5e31cbdd1\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="6a022bf00ccd0948a8180c505e8e458bbddd43a6">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Project\AndroidApp\DailyShedule\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_03bc5c94b5eb60699ecbaee682aabaca8ca81e1e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\user\AndroidStudioProjects\Project\AndroidApp\DailyShedule\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Project\AndroidApp\DailyShedule\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_6ccf73331b7f6025ff566eaf185f10488c0ddac9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\user\.android\build-cache\e9366f08f632603b7a6e16b02498ea2b1361f232\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="cddcd0fb93bc70e27325f2f715b2710332004ebb">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Project\AndroidApp\DailyShedule\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2d0166873fed84f7d97a68bb586599796c515249\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\user\AndroidStudioProjects\Project\AndroidApp\DailyShedule\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c519708348d64c89d76475a26f498bc6fff9bd7d">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Project\AndroidApp\DailyShedule\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_0648247d10ba426b8ae5c6eee3f7cb642969d6af\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\user\.android\build-cache\d2c3607edb2f2ce2707d1a5a9df0a5bdce8690d4\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c4f45092eee6cdf1a5dbd597b2b6819be652ce2e">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Project\AndroidApp\DailyShedule\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_394966f26ffd6b18add0a272e2fa78caf880c28f\classes.dex" />
+    </item>
+
+</items>
