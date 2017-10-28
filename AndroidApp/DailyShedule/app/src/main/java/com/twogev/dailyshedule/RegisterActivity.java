@@ -205,14 +205,14 @@ public class RegisterActivity extends AppCompatActivity {
         public void onClick(View v) {
             show = !show;
             if(show) {
-                btn_show_password.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorButton)));
+                btn_show_password.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorButtonShowedPassword)));
                 password_text.setInputType(InputType.TYPE_TEXT_VARIATION_NORMAL | InputType.TYPE_CLASS_TEXT);
                 password_text.setSelection(password_text.getText().length());
 
 
             }else{
                 password_text.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD | InputType.TYPE_CLASS_TEXT);
-                btn_show_password.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorButton)));
+                btn_show_password.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorButtonUnShowedPassword)));
                 password_text.setSelection(password_text.getText().length());
 
             }

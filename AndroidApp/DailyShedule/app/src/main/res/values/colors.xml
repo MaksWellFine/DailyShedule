@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#fc962e</color>
     <color name="colorPrimaryLight">#fcc664</color>
     <color name="colorAccent">#a3a3c2</color>
-    <color name="colorButton">#fc962e</color>
+    <color name="colorButtonShowedPassword">#fc962e</color>
+    <color name="colorButtonUnShowedPassword">#aaaaaa</color>
 </resources>
