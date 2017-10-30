@@ -72,41 +72,41 @@ public class RegisterActivity extends AppCompatActivity {
 
             if (!email_text.getText().toString().contains("@")) {
                 email.setTextColor(Color.rgb(255, 50, 50));
-                email.setText("e-mail   (incorrect)");
+                email.setText("Email   (incorrect)");
                 check_2=false;
             } else {
                 email.setTextColor(Color.rgb(50, 220, 50));
-                email.setText("e-mail");
+                email.setText("Email");
 
             }
 
 
             if (!(name_text.getText().toString().length() > 0)) {
                 name.setTextColor(Color.rgb(255, 50, 50));
-                name.setText("name  (this is a required field)");
+                name.setText("Name  (this is a required field)");
                 check_2=false;
             } else {
                 name.setTextColor(Color.rgb(50, 220, 50));
-                name.setText("name");
+                name.setText("Name");
             }
 
 
             if (!(surname_text.getText().toString().length() > 0)) {
                 surname.setTextColor(Color.rgb(255, 50, 50));
-                surname.setText("surname   (this is a required field)");
+                surname.setText("Surname   (this is a required field)");
                 check_2=false;
             } else {
                 surname.setTextColor(Color.rgb(50, 220, 50));
-                surname.setText("surname");
+                surname.setText("Surname");
             }
 
             if (!(password_text.getText().toString().length() >= 8)) {
-                password.setText("password   (too short password)");
+                password.setText("Password   (too short password)");
                 password.setTextColor(Color.rgb(255, 50, 50));
                 check_2=false;
             } else {
                 password.setTextColor(Color.rgb(50, 220, 50));
-                password.setText("password");
+                password.setText("Password");
             }
             if(!check_2)
                 return;
