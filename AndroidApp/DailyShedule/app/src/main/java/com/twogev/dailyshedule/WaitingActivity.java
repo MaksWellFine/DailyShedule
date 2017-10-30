@@ -21,6 +21,7 @@ import java.net.URLEncoder;
 public class WaitingActivity extends AppCompatActivity {
 
     String accessCode = "d3J5s66G";
+    TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +33,8 @@ public class WaitingActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        TextView text = (TextView)findViewById(R.id.text_waiting);
-        if(!intent.getBooleanExtra("Type", false))
+        text = (TextView)findViewById(R.id.text_waiting);
+        if(intent.getIntExtra("Type", 0) == 0)
         {
             text.setText("Wait a moment");
             try {
@@ -83,6 +84,7 @@ public class WaitingActivity extends AppCompatActivity {
                 openActivity();
             }
 
+            text.setText(result.toString());
             //Snackbar snackbar = Snackbar
             //        .make(coordinatorLayout, "Welcome to AndroidHive", Snackbar.LENGTH_LONG);
 
