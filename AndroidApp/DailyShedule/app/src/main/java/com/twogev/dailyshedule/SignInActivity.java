@@ -44,6 +44,7 @@ public class SignInActivity extends AppCompatActivity {
 
         edit_password = (EditText)findViewById(R.id.edit_password);
         text_password = (TextView)findViewById(R.id.text_password);
+        int zminna = 0; 
 
         registerA = new Intent(this, RegisterActivity.class);
 //        edit_password.setOnTouchListener(new_text_password);

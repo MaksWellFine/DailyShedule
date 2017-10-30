@@ -13,21 +13,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class RegisterActivity extends AppCompatActivity {
-    public boolean   show = false;
-    public EditText  email_text;
-    public EditText  password_text;
-    public EditText  name_text;
-    public EditText  surname_text;
-    public Button    Register;
-    public TextView  email ;
-    public TextView  name;
-    public TextView  surname;
-    public TextView  password;
-
-
-    public Button    btn_show_password;
-    public EditText  check;
-
+    public boolean  show = false;
+    public EditText email_text;
+    public EditText password_text;
+    public EditText name_text;
+    public EditText surname_text;
+    public Button   Register;
+    public TextView email ;
+    public TextView name;
+    public TextView surname;
+    public TextView password;
+    public Button   btn_show_password;
+    public EditText check;
 
 
 
