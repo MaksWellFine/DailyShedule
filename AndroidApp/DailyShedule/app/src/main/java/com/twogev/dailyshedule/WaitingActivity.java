@@ -46,6 +46,14 @@ public class WaitingActivity extends AppCompatActivity {
         }else
         {
             text.setText("Registering");
+            try {
+                String key = URLEncoder.encode(accessCode, "UTF-8");
+                String name = URLEncoder.encode(intent.getStringExtra("Name"), "UTF-8");
+                String email = URLEncoder.encode(intent.getStringExtra("Email"), "UTF-8");
+                String password = URLEncoder.encode(intent.getStringExtra("Password"), "UTF-8");
+                new SendRequestTask().execute("https://daytalk.000webhostapp.com/sign_up.php?key=" + key + "&name=" + name + "&email=" + email + "&password=" + password);
+            } catch (UnsupportedEncodingException e) {
+            }
         }
     }
 
@@ -75,6 +83,11 @@ public class WaitingActivity extends AppCompatActivity {
                 openActivity();
             }
 
+            //Snackbar snackbar = Snackbar
+            //        .make(coordinatorLayout, "Welcome to AndroidHive", Snackbar.LENGTH_LONG);
+
+            //snackbar.show();/
+
             closeActivity();
             //Button but_register = (Button) findViewById(R.id.but_register);
             //but_register.setText(result);
@@ -99,7 +112,7 @@ public class WaitingActivity extends AppCompatActivity {
             } finally {
                 urlConnection.disconnect();
             }
-        }catch (Exception e){SetServerString = "Fail";}
+        }catch (Exception e){SetServerString = "1";}
 
         return SetServerString;
     }
