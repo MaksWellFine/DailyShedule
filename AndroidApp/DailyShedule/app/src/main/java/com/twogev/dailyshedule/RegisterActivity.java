@@ -122,6 +122,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
             if(!check_2)
                 return;
+            Reg();
 
 
 
