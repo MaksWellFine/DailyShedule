@@ -1,5 +1,6 @@
 package com.twogev.dailyshedule;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,7 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class RegisterActivity extends AppCompatActivity {
-    public boolean  show = false;
+    public boolean  show = false, check_2 = true;
     public EditText email_text;
     public EditText password_text;
     public EditText name_text;
@@ -35,10 +36,6 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_window);
         getSupportActionBar().hide();
-
-
-
-
 
         password_text = (EditText) findViewById(R.id.reg_text_password);
         name_text     = (EditText) findViewById(R.id.reg_text_name);
@@ -88,15 +85,18 @@ public class RegisterActivity extends AppCompatActivity {
             if (!email_text.getText().toString().contains("@")) {
                 email.setTextColor(Color.rgb(255, 50, 50));
                 email.setText("e-mail   (incorrect)");
+                check_2=false;
             } else {
                 email.setTextColor(Color.rgb(50, 220, 50));
                 email.setText("e-mail");
+
             }
 
 
             if (!(name_text.getText().toString().length() > 0)) {
                 name.setTextColor(Color.rgb(255, 50, 50));
                 name.setText("name  (this is a required field)");
+                check_2=false;
             } else {
                 name.setTextColor(Color.rgb(50, 220, 50));
                 name.setText("name");
@@ -106,6 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
             if (!(surname_text.getText().toString().length() > 0)) {
                 surname.setTextColor(Color.rgb(255, 50, 50));
                 surname.setText("surname   (this is a required field)");
+                check_2=false;
             } else {
                 surname.setTextColor(Color.rgb(50, 220, 50));
                 surname.setText("surname");
@@ -114,14 +115,28 @@ public class RegisterActivity extends AppCompatActivity {
             if (!(password_text.getText().toString().length() > 8)) {
                 password.setText("password   (too short password)");
                 password.setTextColor(Color.rgb(255, 50, 50));
+                check_2=false;
             } else {
                 password.setTextColor(Color.rgb(50, 220, 50));
                 password.setText("password");
             }
+            if(!check_2)
+                return;
+
 
 
         }
     };
+
+
+    public void Reg(){
+        Intent waitingB = new Intent(this, WaitingActivity.class);
+        waitingB.putExtra("Type", 1);
+        waitingB.putExtra("Email", email_text.getText().toString());
+        waitingB.putExtra("Name", name_text.getText().toString()+"&"+surname_text.getText().toString());
+        waitingB.putExtra("Password", password_text.getText().toString());
+        startActivity(waitingB);
+    }
 
 
 
@@ -205,13 +220,10 @@ public class RegisterActivity extends AppCompatActivity {
                 btn_show_password.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorButtonShowedPassword)));
                 password_text.setInputType(InputType.TYPE_TEXT_VARIATION_NORMAL | InputType.TYPE_CLASS_TEXT);
                 password_text.setSelection(password_text.getText().length());
-
-
             }else{
                 password_text.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD | InputType.TYPE_CLASS_TEXT);
                 btn_show_password.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorButtonUnShowedPassword)));
                 password_text.setSelection(password_text.getText().length());
-
             }
         }
     };
