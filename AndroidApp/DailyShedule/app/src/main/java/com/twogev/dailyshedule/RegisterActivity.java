@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.text.InputType;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -27,10 +28,6 @@ public class RegisterActivity extends AppCompatActivity {
     public Button   btn_show_password;
     public EditText check;
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,17 +45,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         Register      = (Button)   findViewById(R.id.button);
         btn_show_password = (Button) findViewById(R.id.button3);
-
-
-
         btn_show_password.setOnClickListener(show_password);
-
-
-
-
         check = email_text;
-
-
 
         btn_show_password.setOnClickListener(show_password);
         Register.setOnClickListener(check_all_and_register);
@@ -72,7 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
         surname_text.setOnFocusChangeListener(check_Focus);
         password_text.setOnFocusChangeListener(check_Focus);
         email_text.setOnFocusChangeListener(check_Focus);
-        email_text    = (EditText) findViewById(R.id.reg_text_emaill);
+        email_text  = (EditText) findViewById(R.id.reg_text_emaill);
         email_text.setOnFocusChangeListener(check_Focus);
     }
 
@@ -112,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
                 surname.setText("surname");
             }
 
-            if (!(password_text.getText().toString().length() > 8)) {
+            if (!(password_text.getText().toString().length() >= 8)) {
                 password.setText("password   (too short password)");
                 password.setTextColor(Color.rgb(255, 50, 50));
                 check_2=false;
@@ -123,8 +111,7 @@ public class RegisterActivity extends AppCompatActivity {
             if(!check_2)
                 return;
             Reg();
-
-
+            check_2 = !check_2;
 
         }
     };
@@ -138,6 +125,7 @@ public class RegisterActivity extends AppCompatActivity {
         waitingB.putExtra("Password", password_text.getText().toString());
         startActivity(waitingB);
     }
+
 
 
 
