@@ -2,6 +2,7 @@ package com.twogev.dailyshedule;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.support.v7.app.AppCompatActivity;
 
 public class Main extends AppCompatActivity {
@@ -16,6 +17,4 @@ public class Main extends AppCompatActivity {
         startActivity(intent);
         this.finish();
     }
-
-
 }

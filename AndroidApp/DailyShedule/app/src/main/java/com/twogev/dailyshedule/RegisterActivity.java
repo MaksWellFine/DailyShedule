@@ -1,13 +1,12 @@
 package com.twogev.dailyshedule;
 
-import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+
 import android.text.InputType;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -15,24 +14,36 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class RegisterActivity extends AppCompatActivity {
-    public boolean  show = false, check_2 = true;
-    public EditText email_text;
-    public EditText password_text;
-    public EditText name_text;
-    public EditText surname_text;
-    public Button   Register;
-    public TextView email ;
-    public TextView name;
-    public TextView surname;
-    public TextView password;
-    public Button   btn_show_password;
-    public EditText check;
+    public boolean   first_check = false;
+    public boolean   show = false;
+    public EditText  email_text;
+    public EditText  password_text;
+    public EditText  name_text;
+    public EditText  surname_text;
+    public Button    Register;
+    public TextView  email ;
+    public TextView  name;
+    public TextView  surname;
+    public TextView  password;
+
+
+    public Button    btn_show_password;
+    public EditText  check;
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_window);
         getSupportActionBar().hide();
+
+
+
+
 
         password_text = (EditText) findViewById(R.id.reg_text_password);
         name_text     = (EditText) findViewById(R.id.reg_text_name);
@@ -45,7 +56,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         Register      = (Button)   findViewById(R.id.button);
         btn_show_password = (Button) findViewById(R.id.button3);
+
         btn_show_password.setOnClickListener(show_password);
+
         check = email_text;
 
         btn_show_password.setOnClickListener(show_password);
@@ -60,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
         surname_text.setOnFocusChangeListener(check_Focus);
         password_text.setOnFocusChangeListener(check_Focus);
         email_text.setOnFocusChangeListener(check_Focus);
-        email_text  = (EditText) findViewById(R.id.reg_text_emaill);
+        email_text    = (EditText) findViewById(R.id.reg_text_emaill);
         email_text.setOnFocusChangeListener(check_Focus);
     }
 
@@ -72,70 +85,52 @@ public class RegisterActivity extends AppCompatActivity {
 
             if (!email_text.getText().toString().contains("@")) {
                 email.setTextColor(Color.rgb(255, 50, 50));
-                email.setText("Email   (incorrect)");
-                check_2=false;
+                email.setText("e-mail   (incorrect)");
             } else {
                 email.setTextColor(Color.rgb(50, 220, 50));
-                email.setText("Email");
-
+                email.setText("e-mail");
             }
 
 
             if (!(name_text.getText().toString().length() > 0)) {
                 name.setTextColor(Color.rgb(255, 50, 50));
-                name.setText("Name  (this is a required field)");
-                check_2=false;
+                name.setText("name  (this is a required field)");
             } else {
                 name.setTextColor(Color.rgb(50, 220, 50));
-                name.setText("Name");
+                name.setText("name");
             }
 
 
             if (!(surname_text.getText().toString().length() > 0)) {
                 surname.setTextColor(Color.rgb(255, 50, 50));
-                surname.setText("Surname   (this is a required field)");
-                check_2=false;
+                surname.setText("surname   (this is a required field)");
             } else {
                 surname.setTextColor(Color.rgb(50, 220, 50));
-                surname.setText("Surname");
+                surname.setText("surname");
             }
 
-            if (!(password_text.getText().toString().length() >= 8)) {
-                password.setText("Password   (too short password)");
+            if (!(password_text.getText().toString().length() > 8)) {
+                password.setText("password   (too short password)");
+
                 password.setTextColor(Color.rgb(255, 50, 50));
-                check_2=false;
             } else {
                 password.setTextColor(Color.rgb(50, 220, 50));
-                password.setText("Password");
+                password.setText("password");
             }
-            if(!check_2)
-                return;
-            Reg();
-            check_2 = !check_2;
+
+
 
         }
     };
-
-
-    public void Reg(){
-        Intent waitingB = new Intent(this, WaitingActivity.class);
-        waitingB.putExtra("Type", 1);
-        waitingB.putExtra("Email", email_text.getText().toString());
-        waitingB.putExtra("Name", name_text.getText().toString()+"&"+surname_text.getText().toString());
-        waitingB.putExtra("Password", password_text.getText().toString());
-        startActivity(waitingB);
-    }
-
-
-
-
 
     private View.OnTouchListener check_toush = new View.OnTouchListener(){
 
         @Override
         public boolean onTouch(View v, MotionEvent event) {
-            if(v.isFocused())
+            if(v.isFocused()) {
                 check_all(v);
+                first_check = true;
+            }
             return false;
         }
 
@@ -148,8 +143,8 @@ public class RegisterActivity extends AppCompatActivity {
 
             if(!hasFocus){
                 check_all(v);
-            }
 
+        }
         }
     };
 
@@ -158,12 +153,14 @@ public class RegisterActivity extends AppCompatActivity {
 
 
         if(check == email_text) {
-            if (!check.getText().toString().contains("@")) {
+            if (!check.getText().toString().contains("@") && first_check) {
                 email.setTextColor(Color.rgb(255, 50, 50));
                 email.setText("e-mail   (incorrect)");
             } else {
-                email.setTextColor(Color.rgb(50, 220, 50));
-                email.setText("e-mail");
+                if(first_check) {
+                    email.setTextColor(Color.rgb(50, 220, 50));
+                    email.setText("e-mail");
+                }
             }
         }
         if(check == name_text) {
@@ -188,19 +185,14 @@ public class RegisterActivity extends AppCompatActivity {
             if (!(check.getText().toString().length()  > 8)) {
                 password.setText("password   (too short password)");
                 password.setTextColor(Color.rgb(255, 50, 50));
+
             } else {
                 password.setTextColor(Color.rgb(50, 255, 50));
                 password.setText("password");
             }
         }
 
-
-
     }
-
-
-
-
     private SearchView.OnClickListener show_password = new SearchView.OnClickListener(){
         @Override
         public void onClick(View v) {
@@ -209,10 +201,13 @@ public class RegisterActivity extends AppCompatActivity {
                 btn_show_password.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorButtonShowedPassword)));
                 password_text.setInputType(InputType.TYPE_TEXT_VARIATION_NORMAL | InputType.TYPE_CLASS_TEXT);
                 password_text.setSelection(password_text.getText().length());
+
+
             }else{
                 password_text.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD | InputType.TYPE_CLASS_TEXT);
                 btn_show_password.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorButtonUnShowedPassword)));
                 password_text.setSelection(password_text.getText().length());
+
             }
         }
     };

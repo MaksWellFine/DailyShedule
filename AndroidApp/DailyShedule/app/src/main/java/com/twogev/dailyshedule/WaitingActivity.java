@@ -43,8 +43,8 @@ public class WaitingActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        text = (TextView)findViewById(R.id.text_waiting);
-        if(intent.getIntExtra("Type", 0) == 0)
+        TextView text = (TextView)findViewById(R.id.text_waiting);
+        if(!intent.getBooleanExtra("Type", false))
         {
             text.setText("Wait a moment");
             type = 0;
@@ -67,6 +67,7 @@ public class WaitingActivity extends AppCompatActivity {
                 new SendRequestTask().execute("https://daytalk.000webhostapp.com/sign_up.php?key=" + key + "&name=" + name + "&email=" + email + "&password=" + password);
             } catch (UnsupportedEncodingException e) {
             }
+
         }
     }
 
@@ -126,6 +127,7 @@ public class WaitingActivity extends AppCompatActivity {
             }
             intent.putExtra("result", result);
             setResult(RESULT_OK, intent);
+
             closeActivity();
 //            snackbar.setDuration(8000); // 8 секунд
 
@@ -152,7 +154,7 @@ public class WaitingActivity extends AppCompatActivity {
             } finally {
                 urlConnection.disconnect();
             }
-        }catch (Exception e){SetServerString = "1";}
+        }catch (Exception e){SetServerString = "Fail";}
 
         return SetServerString;
     }

@@ -45,7 +45,6 @@ public class SignInActivity extends AppCompatActivity {
 
         edit_password = (EditText)findViewById(R.id.edit_password);
         text_password = (TextView)findViewById(R.id.text_password);
-        int zminna = 0;
 
         registerA = new Intent(this, RegisterActivity.class);
 //        edit_password.setOnTouchListener(new_text_password);
@@ -158,7 +157,7 @@ public class SignInActivity extends AppCompatActivity {
     {
         Snackbar snackbar = Snackbar
                 .make(findViewById(R.id.sign_in_layout), s, Snackbar.LENGTH_LONG);
-        snackbar.getView().setBackgroundColor(Color.DKGRAY);
+        snackbar.getView().setBackgroundColor(Color.GRAY);
         TextView t = (TextView)snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);//setActionTextColor(getResources().getColor(R.color.colorPrimary));
         t.setTextColor(getResources().getColor(R.color.colorPrimary));
         snackbar.show();
