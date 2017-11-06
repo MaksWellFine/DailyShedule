@@ -4,11 +4,20 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Process;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+//import android.support.design.widget.BaseTransientBottomBar;
+import java.lang.Object;
+//import android.support.design.widget.Snackbar;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
@@ -22,6 +31,7 @@ public class WaitingActivity extends AppCompatActivity {
 
     String accessCode = "d3J5s66G";
     TextView text;
+    int type = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +47,7 @@ public class WaitingActivity extends AppCompatActivity {
         if(intent.getIntExtra("Type", 0) == 0)
         {
             text.setText("Wait a moment");
+            type = 0;
             try {
                 String key = URLEncoder.encode(accessCode, "UTF-8");
                 String email = URLEncoder.encode(intent.getStringExtra("Email"), "UTF-8");
@@ -46,6 +57,7 @@ public class WaitingActivity extends AppCompatActivity {
             }
         }else
         {
+            type = 1;
             text.setText("Registering");
             try {
                 String key = URLEncoder.encode(accessCode, "UTF-8");
@@ -84,13 +96,39 @@ public class WaitingActivity extends AppCompatActivity {
                 openActivity();
             }
 
-            text.setText(result.toString());
-            //Snackbar snackbar = Snackbar
-            //        .make(coordinatorLayout, "Welcome to AndroidHive", Snackbar.LENGTH_LONG);
+            int res = -1;
+            try{res = Integer.parseInt(result); } catch (Exception e){}
 
-            //snackbar.show();/
-
+            Intent intent = new Intent();
+            if(type == 0)
+            {
+                switch(res)
+                {
+                    case(0):
+                        result = "Success connect";
+                        break;
+                    case(1):
+                        result = "This user not registered. You can create account now!";
+                        break;
+                    case(2):
+                        result = "Can't connect. Wrong password or email";
+                        break;
+                    case(3):
+                        result = "Can't connect. Wrong password or email";
+                        break;
+                    default:
+                        result = "Some problems with login, try again";
+                        break;
+                }
+            }else if(type == 1)
+            {
+                result = "Not already complete";
+            }
+            intent.putExtra("result", result);
+            setResult(RESULT_OK, intent);
             closeActivity();
+//            snackbar.setDuration(8000); // 8 секунд
+
             //Button but_register = (Button) findViewById(R.id.but_register);
             //but_register.setText(result);
 

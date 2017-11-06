@@ -9,6 +9,7 @@ package com.twogev.dailyshedule;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.View;
@@ -139,7 +140,28 @@ public class SignInActivity extends AppCompatActivity {
         waitingA.putExtra("Type", 0);
         waitingA.putExtra("Email", edit_login.getText().toString());
         waitingA.putExtra("Password", edit_password.getText().toString());
-        startActivity(waitingA);
+        startActivityForResult(waitingA, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case 1:
+                    showMessage(data.getStringExtra("result"));
+            }
+        }
+    }
+
+    private void showMessage(String s)
+    {
+        Snackbar snackbar = Snackbar
+                .make(findViewById(R.id.sign_in_layout), s, Snackbar.LENGTH_LONG);
+        snackbar.getView().setBackgroundColor(Color.DKGRAY);
+        TextView t = (TextView)snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);//setActionTextColor(getResources().getColor(R.color.colorPrimary));
+        t.setTextColor(getResources().getColor(R.color.colorPrimary));
+        snackbar.show();
     }
 
     private int check_login(String s)
