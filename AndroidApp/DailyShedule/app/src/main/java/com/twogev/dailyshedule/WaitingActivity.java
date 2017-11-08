@@ -38,6 +38,8 @@ public class WaitingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.waiting_activity);
 
+        getSupportActionBar().hide();
+
         ProgressBar spinner = (ProgressBar) findViewById(R.id.progress_waiting);
         spinner.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
 

@@ -159,6 +159,8 @@ public class SignInActivity extends AppCompatActivity {
                 .make(findViewById(R.id.sign_in_layout), s, Snackbar.LENGTH_LONG);
         snackbar.getView().setBackgroundColor(Color.GRAY);
         TextView t = (TextView)snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);//setActionTextColor(getResources().getColor(R.color.colorPrimary));
+        t.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        t.setTextSize(16);
         t.setTextColor(getResources().getColor(R.color.colorPrimary));
         snackbar.show();
     }
