@@ -16,29 +16,32 @@
         android:text="Registering menu \n(Please, fill all poles)"
         android:textAlignment="center"
         android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/reg_text_email"
+        app:layout_constraintVertical_bias="0.6" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/reg_text_email"
+        android:layout_width="0dp"
+        android:layout_height="280dp"
+        android:layout_marginBottom="80dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp" />
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/reg_text_email"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="80dp"
-        android:layout_marginTop="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:layout_marginLeft="48dp"
-        android:layout_marginRight="48dp"
-        app:layout_constraintHorizontal_bias="0.0">
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp">
 
         <LinearLayout
             android:id="@+id/layout_email"
@@ -49,7 +52,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.050000012">
+            app:layout_constraintVertical_bias="0.0">
 
             <TextView
                 android:id="@+id/reg_email"
@@ -88,7 +91,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.35000002">
+            app:layout_constraintVertical_bias="0.33999997">
 
             <TextView
                 android:id="@+id/reg_name"
@@ -125,7 +128,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.64">
+            app:layout_constraintVertical_bias="0.65999997">
 
             <TextView
                 android:id="@+id/reg_surname"
@@ -162,7 +165,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.93">
+            app:layout_constraintVertical_bias="1.0">
 
             <TextView
                 android:id="@+id/reg_password"
@@ -193,14 +196,14 @@
                 android:id="@+id/button3"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
+                android:layout_marginLeft="8dp"
                 android:background="@android:drawable/ic_menu_view"
                 android:backgroundTint="@color/colorAccent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/reg_text_password"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.75" />
+                app:layout_constraintVertical_bias="0.727" />
 
         </android.support.constraint.ConstraintLayout>
 
