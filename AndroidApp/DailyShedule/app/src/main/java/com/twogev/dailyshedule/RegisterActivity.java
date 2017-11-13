@@ -1,5 +1,6 @@
 package com.twogev.dailyshedule;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class RegisterActivity extends AppCompatActivity {
+    public boolean   last_check = true;
     public boolean   first_check = false;
     public boolean   show = false;
     public EditText  email_text;
@@ -86,6 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
             if (!email_text.getText().toString().contains("@")) {
                 email.setTextColor(Color.rgb(255, 50, 50));
                 email.setText("E-mail   (incorrect)");
+                last_check = false;
             } else {
                 email.setTextColor(Color.rgb(50, 220, 50));
                 email.setText("E-mail");
@@ -95,6 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
             if (!(name_text.getText().toString().length() > 0)) {
                 name.setTextColor(Color.rgb(255, 50, 50));
                 name.setText("Name  (this is a required field)");
+                last_check = false;
             } else {
                 name.setTextColor(Color.rgb(50, 220, 50));
                 name.setText("Name");
@@ -104,6 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
             if (!(surname_text.getText().toString().length() > 0)) {
                 surname.setTextColor(Color.rgb(255, 50, 50));
                 surname.setText("Surname   (this is a required field)");
+                last_check = false;
             } else {
                 surname.setTextColor(Color.rgb(50, 220, 50));
                 surname.setText("Surname");
@@ -111,12 +116,15 @@ public class RegisterActivity extends AppCompatActivity {
 
             if (!(password_text.getText().toString().length() > 8)) {
                 password.setText("Password   (too short password)");
-
                 password.setTextColor(Color.rgb(255, 50, 50));
+                last_check = false;
             } else {
                 password.setTextColor(Color.rgb(50, 220, 50));
                 password.setText("Password");
             }
+            if(last_check)
+                Reg();
+            last_check = true;
 
 
 
@@ -193,6 +201,18 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
     }
+
+    public void Reg(){
+        Intent waitingB = new Intent(this, WaitingActivity.class);
+        waitingB.putExtra("Type", 1);
+        waitingB.putExtra("Email", email_text.getText().toString());
+        waitingB.putExtra("Name", name_text.getText().toString()+"&"+surname_text.getText().toString());
+        waitingB.putExtra("Password", password_text.getText().toString());
+        startActivity(waitingB);
+    }
+
+
+
     private SearchView.OnClickListener show_password = new SearchView.OnClickListener(){
         @Override
         public void onClick(View v) {
