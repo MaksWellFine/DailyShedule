@@ -46,7 +46,7 @@ public class WaitingActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         TextView text = (TextView)findViewById(R.id.text_waiting);
-        if(!intent.getBooleanExtra("Type", false))
+        if(intent.getIntExtra("Type", 0) == 0)
         {
             text.setText("Wait a moment");
             type = 0;

@@ -139,7 +139,7 @@ public class SignInActivity extends AppCompatActivity {
         waitingA.putExtra("Type", 0);
         waitingA.putExtra("Email", edit_login.getText().toString());
         waitingA.putExtra("Password", edit_password.getText().toString());
-        startActivityForResult(waitingA, 1);
+        startActivityForResult(waitingA, 0);
     }
 
     @Override
@@ -147,8 +147,10 @@ public class SignInActivity extends AppCompatActivity {
 
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
-                case 1:
-                    ShowMessages.ShowSnackbar(findViewById(R.id.sign_in_layout), data.getStringExtra("result"));
+                case 0:
+                    try {
+                        ShowMessages.ShowSnackbar(findViewById(R.id.sign_in_layout), data.getStringExtra("result"));
+                    }catch (Exception e) {((EditText)(findViewById(R.id.edit_login))).setText(e.toString());}
             }
         }
     }
