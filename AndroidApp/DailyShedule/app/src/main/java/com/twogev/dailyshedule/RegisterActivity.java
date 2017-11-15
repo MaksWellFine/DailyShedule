@@ -202,13 +202,24 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case 1:
+                    ShowMessages.ShowSnackbar(findViewById(R.id.register_layout), data.getStringExtra("result"));
+            }
+        }
+    }
+
     public void Reg(){
         Intent waitingB = new Intent(this, WaitingActivity.class);
         waitingB.putExtra("Type", 1);
         waitingB.putExtra("Email", email_text.getText().toString());
         waitingB.putExtra("Name", name_text.getText().toString()+"&"+surname_text.getText().toString());
         waitingB.putExtra("Password", password_text.getText().toString());
-        startActivity(waitingB);
+        startActivityForResult(waitingB, 1);
     }
 
 

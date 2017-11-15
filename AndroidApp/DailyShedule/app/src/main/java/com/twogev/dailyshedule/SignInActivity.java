@@ -148,22 +148,12 @@ public class SignInActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case 1:
-                    showMessage(data.getStringExtra("result"));
+                    ShowMessages.ShowSnackbar(findViewById(R.id.sign_in_layout), data.getStringExtra("result"));
             }
         }
     }
 
-    private void showMessage(String s)
-    {
-        Snackbar snackbar = Snackbar
-                .make(findViewById(R.id.sign_in_layout), s, Snackbar.LENGTH_LONG);
-        snackbar.getView().setBackgroundColor(Color.GRAY);
-        TextView t = (TextView)snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);//setActionTextColor(getResources().getColor(R.color.colorPrimary));
-        t.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        t.setTextSize(16);
-        t.setTextColor(getResources().getColor(R.color.colorPrimary));
-        snackbar.show();
-    }
+
 
     private int check_login(String s)
     {

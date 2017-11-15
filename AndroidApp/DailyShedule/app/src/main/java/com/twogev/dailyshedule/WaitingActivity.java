@@ -125,8 +125,20 @@ public class WaitingActivity extends AppCompatActivity {
                 }
             }else if(type == 1)
             {
-                result = "Not already complete";
+                switch(res){
+                    case(0):
+                        result = "Success registration";
+                        break;
+                    case (1):
+                        result = "Some problems with registration, try again";
+                        break;
+                    case (2):
+                        result = "This user already exist";
+                        break;
+                }
             }
+
+
             intent.putExtra("result", result);
             setResult(RESULT_OK, intent);
 
