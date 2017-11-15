@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class RegisterActivity extends AppCompatActivity {
+
     public boolean   last_check = true;
     public boolean   first_check = false;
     public boolean   show = false;
@@ -84,48 +85,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-
-            if (!email_text.getText().toString().contains("@")) {
-                email.setTextColor(Color.rgb(255, 50, 50));
-                email.setText("E-mail   (incorrect)");
-                last_check = false;
-            } else {
-                email.setTextColor(Color.rgb(50, 220, 50));
-                email.setText("E-mail");
-            }
-
-
-            if (!(name_text.getText().toString().length() > 0)) {
-                name.setTextColor(Color.rgb(255, 50, 50));
-                name.setText("Name  (this is a required field)");
-                last_check = false;
-            } else {
-                name.setTextColor(Color.rgb(50, 220, 50));
-                name.setText("Name");
-            }
-
-
-            if (!(surname_text.getText().toString().length() > 0)) {
-                surname.setTextColor(Color.rgb(255, 50, 50));
-                surname.setText("Surname   (this is a required field)");
-                last_check = false;
-            } else {
-                surname.setTextColor(Color.rgb(50, 220, 50));
-                surname.setText("Surname");
-            }
-
-            if (!(password_text.getText().toString().length() > 8)) {
-                password.setText("Password   (too short password)");
-                password.setTextColor(Color.rgb(255, 50, 50));
-                last_check = false;
-            } else {
-                password.setTextColor(Color.rgb(50, 220, 50));
-                password.setText("Password");
-            }
-            if(last_check)
-                Reg();
-            last_check = true;
-
+            check_all(v, true);
 
 
         }
@@ -136,7 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             if(v.isFocused()) {
-                check_all(v);
+                check_all(v, false);
                 first_check = true;
             }
             return false;
@@ -150,20 +110,21 @@ public class RegisterActivity extends AppCompatActivity {
         public void onFocusChange(View v, boolean hasFocus) {
 
             if(!hasFocus){
-                check_all(v);
+                check_all(v, false);
 
         }
         }
     };
 
-    public void check_all(View v){
+    public void check_all(View v, boolean check_1){
         check = (EditText) v;
 
 
-        if(check == email_text) {
+        if(check == email_text || check_1) {
             if (!check.getText().toString().contains("@") && first_check) {
                 email.setTextColor(Color.rgb(255, 50, 50));
                 email.setText("e-mail   (incorrect)");
+                last_check = false;
             } else {
                 if(first_check) {
                     email.setTextColor(Color.rgb(50, 220, 50));
@@ -171,34 +132,40 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         }
-        if(check == name_text) {
+        if(check == name_text || check_1) {
             if (!(check.getText().toString().length() > 0)) {
                 name.setTextColor(Color.rgb(255, 50, 50));
                 name.setText("name  (this is a required field)");
+                last_check = false;
             } else {
                 name.setTextColor(Color.rgb(50, 255, 50));
                 name.setText("name");
             }
         }
-        if(check == surname_text) {
+        if(check == surname_text || check_1) {
             if (!(check.getText().toString().length() > 0)) {
                 surname.setTextColor(Color.rgb(255, 50, 50));
                 surname.setText("surname   (this is a required field)");
+                last_check = false;
             } else {
                 surname.setTextColor(Color.rgb(50, 255, 50));
                 surname.setText("surname");
             }
         }
-        if(check == password_text) {
+        if(check == password_text || check_1) {
             if (!(check.getText().toString().length()  > 8)) {
                 password.setText("password   (too short password)");
                 password.setTextColor(Color.rgb(255, 50, 50));
+                last_check = false;
 
             } else {
                 password.setTextColor(Color.rgb(50, 255, 50));
                 password.setText("password");
             }
         }
+        if(last_check)
+            Reg();
+        last_check = true;
 
     }
 
