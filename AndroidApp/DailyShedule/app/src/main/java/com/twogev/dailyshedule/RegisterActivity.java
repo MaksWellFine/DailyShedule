@@ -124,8 +124,8 @@ public class RegisterActivity extends AppCompatActivity {
         }catch (Exception e){}
 
 
-        if((check == email_text || check_1)) {
-            if (!check.getText().toString().contains("@")) {
+        if((check == email_text) || (check_1)) {
+            if (!email_text.getText().toString().contains("@")) {
                 email.setTextColor(Color.rgb(255, 50, 50));
                 email.setText("E-mail   (Incorrect)");
                 last_check = false;
@@ -134,8 +134,8 @@ public class RegisterActivity extends AppCompatActivity {
                 email.setText("E-mail");
             }
         }
-        if(check == name_text || check_1) {
-            if (!(check.getText().toString().length() > 0)) {
+        if((check == name_text) || (check_1)) {
+            if (!(name_text.getText().toString().length() > 0)) {
                 name.setTextColor(Color.rgb(255, 50, 50));
                 name.setText("Name  (This is a required field)");
                 last_check = false;
@@ -144,8 +144,8 @@ public class RegisterActivity extends AppCompatActivity {
                 name.setText("Name");
             }
         }
-        if(check == surname_text || check_1) {
-            if (!(check.getText().toString().length() > 0)) {
+        if((check == surname_text) || check_1) {
+            if (!(surname_text.getText().toString().length() > 0)) {
                 surname.setTextColor(Color.rgb(255, 50, 50));
                 surname.setText("Surname   (This is a required field)");
                 last_check = false;
@@ -154,8 +154,8 @@ public class RegisterActivity extends AppCompatActivity {
                 surname.setText("Surname");
             }
         }
-        if(check == password_text || check_1) {
-            if (!(check.getText().toString().length()  > 8)) {
+        if((check == password_text) || check_1) {
+            if (!(password_text.getText().toString().length()  > 8)) {
                 password.setText("Password   (Too short password)");
                 password.setTextColor(Color.rgb(255, 50, 50));
                 last_check = false;
@@ -163,6 +163,7 @@ public class RegisterActivity extends AppCompatActivity {
             } else {
                 password.setTextColor(Color.rgb(50, 255, 50));
                 password.setText("Password");
+
             }
         }
         if(last_check && check_1)
