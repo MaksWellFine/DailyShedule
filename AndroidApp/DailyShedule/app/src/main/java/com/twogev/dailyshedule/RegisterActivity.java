@@ -16,8 +16,10 @@ import android.widget.TextView;
 
 public class RegisterActivity extends AppCompatActivity {
 
+
+    private EditText last_focused_edit;
     public boolean   last_check = true;
-    public boolean   first_check = false;
+    public boolean   first_check = true;
     public boolean   show = false;
     public EditText  email_text;
     public EditText  password_text;
@@ -67,17 +69,20 @@ public class RegisterActivity extends AppCompatActivity {
         btn_show_password.setOnClickListener(show_password);
         Register.setOnClickListener(check_all_and_register);
 
-        name_text.setOnTouchListener(check_toush);
-        surname_text.setOnTouchListener(check_toush);
-        password_text.setOnTouchListener(check_toush);
-        email_text.setOnTouchListener(check_toush);
+        name_text.setOnClickListener(check_touch);
+        surname_text.setOnClickListener(check_touch);
+        password_text.setOnClickListener(check_touch);
+        email_text.setOnClickListener(check_touch);
 
         name_text.setOnFocusChangeListener(check_Focus);
         surname_text.setOnFocusChangeListener(check_Focus);
         password_text.setOnFocusChangeListener(check_Focus);
         email_text.setOnFocusChangeListener(check_Focus);
+
         email_text    = (EditText) findViewById(R.id.reg_text_emaill);
         email_text.setOnFocusChangeListener(check_Focus);
+
+        //last_focused_edit = email_text;
     }
 
 
@@ -91,15 +96,15 @@ public class RegisterActivity extends AppCompatActivity {
         }
     };
 
-    private View.OnTouchListener check_toush = new View.OnTouchListener(){
+    private View.OnClickListener check_touch = new View.OnClickListener(){
 
         @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            if(v.isFocused()) {
+        public void onClick(View v) {
+            //((EditText)v).setText(((EditText) v).getText() + "0");
+            if((EditText)v == last_focused_edit) {
                 check_all(v, false);
-                first_check = true;
             }
-            return false;
+            last_focused_edit = (EditText)v;
         }
 
 
@@ -109,10 +114,14 @@ public class RegisterActivity extends AppCompatActivity {
 
         public void onFocusChange(View v, boolean hasFocus) {
 
-            if(!hasFocus){
+            if(hasFocus){
+                //((EditText)v).setText(((EditText) v).getText() + "1");
+                if(!first_check)
+                    last_focused_edit = (EditText) v;
+                else first_check = false;
+                //check_all(v, false);
+            }else
                 check_all(v, false);
-
-        }
         }
     };
 
@@ -120,16 +129,14 @@ public class RegisterActivity extends AppCompatActivity {
         check = (EditText) v;
 
 
-        if(check == email_text || check_1) {
-            if (!check.getText().toString().contains("@") && first_check) {
+        if((check == email_text || check_1)) {
+            if (!check.getText().toString().contains("@")) {
                 email.setTextColor(Color.rgb(255, 50, 50));
                 email.setText("e-mail   (incorrect)");
                 last_check = false;
             } else {
-                if(first_check) {
-                    email.setTextColor(Color.rgb(50, 220, 50));
-                    email.setText("e-mail");
-                }
+                email.setTextColor(Color.rgb(50, 220, 50));
+                email.setText("e-mail");
             }
         }
         if(check == name_text || check_1) {
@@ -163,7 +170,7 @@ public class RegisterActivity extends AppCompatActivity {
                 password.setText("password");
             }
         }
-        if(last_check)
+        if(last_check && check_1)
             Reg();
         last_check = true;
 
