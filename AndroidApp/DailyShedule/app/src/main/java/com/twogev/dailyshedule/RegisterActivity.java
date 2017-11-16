@@ -17,26 +17,22 @@ import android.widget.TextView;
 public class RegisterActivity extends AppCompatActivity {
 
 
+
+    private  boolean last_check = true;
+    private  boolean first_check = true;
+    private  boolean show = false;
     private EditText last_focused_edit;
-    public boolean   last_check = true;
-    public boolean   first_check = true;
-    public boolean   show = false;
-    public EditText  email_text;
-    public EditText  password_text;
-    public EditText  name_text;
-    public EditText  surname_text;
-    public Button    Register;
-    public TextView  email ;
-    public TextView  name;
-    public TextView  surname;
-    public TextView  password;
-
-
-    public Button    btn_show_password;
-    public EditText  check;
-
-
-
+    private EditText email_text;
+    private EditText password_text;
+    private EditText name_text;
+    private EditText surname_text;
+    private EditText check;
+    private TextView email ;
+    private TextView name;
+    private TextView surname;
+    private TextView password;
+    private   Button register;
+    private   Button btn_show_password;
 
 
 
@@ -58,8 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
         surname       = (TextView) findViewById(R.id.reg_surname);
         password      = (TextView) findViewById(R.id.reg_password);
         email_text    = (EditText) findViewById(R.id.reg_text_emaill);
-
-        Register      = (Button)   findViewById(R.id.button);
+        register      = (Button)   findViewById(R.id.button);
         btn_show_password = (Button) findViewById(R.id.button3);
 
         btn_show_password.setOnClickListener(show_password);
@@ -67,7 +62,7 @@ public class RegisterActivity extends AppCompatActivity {
         check = email_text;
 
         btn_show_password.setOnClickListener(show_password);
-        Register.setOnClickListener(check_all_and_register);
+        register.setOnClickListener(check_all_and_register);
 
         name_text.setOnClickListener(check_touch);
         surname_text.setOnClickListener(check_touch);
@@ -91,8 +86,6 @@ public class RegisterActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             check_all(v, true);
-
-
         }
     };
 
@@ -126,53 +119,56 @@ public class RegisterActivity extends AppCompatActivity {
     };
 
     public void check_all(View v, boolean check_1){
-        check = (EditText) v;
+        try{
+            check = (EditText) v;
+        }catch (Exception e){}
 
 
         if((check == email_text || check_1)) {
             if (!check.getText().toString().contains("@")) {
                 email.setTextColor(Color.rgb(255, 50, 50));
-                email.setText("e-mail   (incorrect)");
+                email.setText("E-mail   (Incorrect)");
                 last_check = false;
             } else {
                 email.setTextColor(Color.rgb(50, 220, 50));
-                email.setText("e-mail");
+                email.setText("E-mail");
             }
         }
         if(check == name_text || check_1) {
             if (!(check.getText().toString().length() > 0)) {
                 name.setTextColor(Color.rgb(255, 50, 50));
-                name.setText("name  (this is a required field)");
+                name.setText("Name  (This is a required field)");
                 last_check = false;
             } else {
                 name.setTextColor(Color.rgb(50, 255, 50));
-                name.setText("name");
+                name.setText("Name");
             }
         }
         if(check == surname_text || check_1) {
             if (!(check.getText().toString().length() > 0)) {
                 surname.setTextColor(Color.rgb(255, 50, 50));
-                surname.setText("surname   (this is a required field)");
+                surname.setText("Surname   (This is a required field)");
                 last_check = false;
             } else {
                 surname.setTextColor(Color.rgb(50, 255, 50));
-                surname.setText("surname");
+                surname.setText("Surname");
             }
         }
         if(check == password_text || check_1) {
             if (!(check.getText().toString().length()  > 8)) {
-                password.setText("password   (too short password)");
+                password.setText("Password   (Too short password)");
                 password.setTextColor(Color.rgb(255, 50, 50));
                 last_check = false;
 
             } else {
                 password.setTextColor(Color.rgb(50, 255, 50));
-                password.setText("password");
+                password.setText("Password");
             }
         }
         if(last_check && check_1)
             Reg();
         last_check = true;
+
 
     }
 
