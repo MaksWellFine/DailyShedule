@@ -155,7 +155,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         }
         if((check == password_text) || check_1) {
-            if (!(password_text.getText().toString().length()  > 9)) {
+            if (!(password_text.getText().toString().length()  >= 8)) {
                 password.setText("Password   (Too short password)");
                 password.setTextColor(Color.rgb(255, 50, 50));
                 last_check = false;
