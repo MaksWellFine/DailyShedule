@@ -1,0 +1,39 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="209dp"
+    android:height="209dp"
+    android:viewportWidth="209"
+    android:viewportHeight="209">
+
+    <group android:name = "S3">
+        <path
+            android:fillColor="#e2ab7e"
+            android:name="S"
+            android:pathData="m201.94 83.08c0 -17.21 -13.97 -31.18 -31.18 -31.18h-105.12c-17.21 0 -31.18 13.97 -31.18 31.18v62.37c0 17.21 13.97 31.18 31.18 31.18h105.12c17.21 0 31.18 -13.97 31.18 -31.18v-62.37z" />
+    </group>
+
+    <group android:name = "S2">
+        <path
+            android:fillColor="#e09b61"
+            android:name="S"
+            android:pathData="m189.14 74.63c0 -17.21 -13.97 -31.18 -31.18 -31.18h-105.12c-17.21 0 -31.18 13.97 -31.18 31.18v62.37c0 17.21 13.97 31.18 31.18 31.18h105.12c17.21 0 31.18 -13.97 31.18 -31.18v-62.37z" />
+    </group>
+
+    <group android:name = "S1">
+        <path
+            android:fillColor="#cd905d"
+            android:name="S"
+            android:pathData="m174.43 63.82c0 -17.21 -13.97 -31.18 -31.18 -31.18h-105.12c-17.21 0 -31.18 13.97 -31.18 31.18v62.37c0 17.21 13.97 31.18 31.18 31.18h105.12c17.21 0 31.18 -13.97 31.18 -31.18v-62.37z" />
+        <path
+            android:fillColor="#ffd0b0"
+            android:name="LL"
+            android:pathData="m66.25 60.85c0 -3.35 -2.72 -6.07 -6.08 -6.07h-12.15c-3.35 0 -6.08 2.72 -6.08 6.07v67.18c0 3.35 2.72 6.08 6.08 6.08h12.15c3.35 0 6.08 -2.72 6.08 -6.08v-67.18z" />
+        <path
+            android:fillColor="#ffd0b0"
+            android:name="LR"
+            android:pathData="m133.22 60.85c0 -3.35 -2.72 -6.07 -6.08 -6.07h-12.15c-3.35 0 -6.08 2.72 -6.08 6.07v67.18c0 3.35 2.72 6.08 6.08 6.08h12.15c3.35 0 6.08 -2.72 6.08 -6.08v-67.18z" />
+        <path
+            android:fillColor="#ffd0b0"
+            android:name="LM"
+            android:pathData="m133.22 89.09c0 -3.11 -2.52 -5.63 -5.63 -5.63h-80c-3.11 0 -5.63 2.52 -5.63 5.63v11.26c0 3.11 2.52 5.63 5.63 5.63h80c3.11 0 5.63 -2.52 5.63 -5.63v-11.26z" />
+    </group>
+</vector>

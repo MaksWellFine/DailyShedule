@@ -96,7 +96,7 @@ public class SignInActivity extends AppCompatActivity {
                     break;
                 case (1):
                     text_login.setTextColor(Color.RED);
-                    text_login.setText("Incorect email address");
+                    text_login.setText("Incorrect email address");
                     incorectInput = true;
                     break;
                 case (2):

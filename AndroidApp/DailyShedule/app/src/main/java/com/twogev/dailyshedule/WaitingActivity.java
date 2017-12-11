@@ -45,7 +45,7 @@ public class WaitingActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        TextView text = (TextView)findViewById(R.id.text_waiting);
+        text = (TextView)findViewById(R.id.text_waiting);
         if(intent.getIntExtra("Type", 0) == 0)
         {
             text.setText("Wait a moment");
@@ -94,13 +94,10 @@ public class WaitingActivity extends AppCompatActivity {
         /** The system calls this to perform work in the UI thread and delivers
          * the result from doInBackground() */
         protected void onPostExecute(String result) {
-            if(result == "0")
-            {
-                openActivity();
-            }
-
             int res = -1;
             try{res = Integer.parseInt(result); } catch (Exception e){}
+
+            boolean canClose = true;
 
             Intent intent = new Intent();
             if(type == 0)
@@ -119,6 +116,9 @@ public class WaitingActivity extends AppCompatActivity {
                     case(3):
                         result = "Can't connect. Wrong password or email";
                         break;
+                    case(4):
+                        result = "This account not already confirmed. Please, confirm it in you email!";
+                        break;
                     default:
                         result = "Some problems with login, try again";
                         break;
@@ -128,6 +128,19 @@ public class WaitingActivity extends AppCompatActivity {
                 switch(res){
                     case(0):
                         result = "Success registration";
+                        text.setText(result + ". Now please confirm you account in you mailbox by tap on link");
+                        canClose = false;
+
+                        try {
+                            try {
+                                Thread.sleep(4000);
+                            }catch (Exception e){}
+                            String key = URLEncoder.encode(accessCode, "UTF-8");
+                            String email = URLEncoder.encode(intent.getStringExtra("Email"), "UTF-8");
+                            String password = URLEncoder.encode(intent.getStringExtra("Password"), "UTF-8");
+                            new SendRequestTask().execute("https://daytalk.000webhostapp.com/sign_in.php?key=" + key + "&email=" + email + "&password=" + password);
+                        } catch (UnsupportedEncodingException e) {
+                        }
                         break;
                     case (1):
                         result = "Some problems with registration, try again";
@@ -138,11 +151,18 @@ public class WaitingActivity extends AppCompatActivity {
                 }
             }
 
+            if(res == 0 && type == 0)
+            {
+                openActivity();
+            }
 
-            intent.putExtra("result", result);
-            setResult(RESULT_OK, intent);
+            if(canClose)
+            {
+                intent.putExtra("result", result);
+                setResult(RESULT_OK, intent);
 
-            closeActivity();
+                closeActivity();
+            }
 //            snackbar.setDuration(8000); // 8 секунд
 
             //Button but_register = (Button) findViewById(R.id.but_register);
