@@ -20,7 +20,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Main">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +28,8 @@
         </activity>
         <activity android:name=".SignInActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".WaitingActivity"></activity>
+        <activity android:name=".WaitingActivity" />
+        <activity android:name=".WriteCodeActivity"></activity>
     </application>
 
 </manifest>

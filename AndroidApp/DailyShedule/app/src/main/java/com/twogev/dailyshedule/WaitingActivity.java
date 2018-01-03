@@ -33,6 +33,7 @@ public class WaitingActivity extends AppCompatActivity {
     TextView text;
     int type = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +74,7 @@ public class WaitingActivity extends AppCompatActivity {
         }
     }
 
-
+    private WaitingActivity GetThis(){ return this; }
 
     private void closeActivity(){
         this.finish();
@@ -127,20 +128,14 @@ public class WaitingActivity extends AppCompatActivity {
             {
                 switch(res){
                     case(0):
-                        result = "Success registration";
-                        text.setText(result + ". Now please confirm you account in you mailbox by tap on link");
-                        canClose = false;
+                        result = "Success registration, but not confirmed!";
 
-                        try {
-                            try {
-                                Thread.sleep(4000);
-                            }catch (Exception e){}
-                            String key = URLEncoder.encode(accessCode, "UTF-8");
-                            String email = URLEncoder.encode(intent.getStringExtra("Email"), "UTF-8");
-                            String password = URLEncoder.encode(intent.getStringExtra("Password"), "UTF-8");
-                            new SendRequestTask().execute("https://daytalk.000webhostapp.com/sign_in.php?key=" + key + "&email=" + email + "&password=" + password);
-                        } catch (UnsupportedEncodingException e) {
-                        }
+                        Intent codeAct = new Intent(GetThis(), WriteCodeActivity.class);
+                        //waitingA.putExtra("Parent", this.getClass());
+                        //codeAct.putExtra("Message", "Success registration. Now, please, confirm you account by write 4-numbers code from you email");
+                        startActivity(codeAct);
+                        //text.setText("Success registration. Now, please, confirm you account by write 4-numbers code from you email");
+                        //canClose = false;
                         break;
                     case (1):
                         result = "Some problems with registration, try again";
